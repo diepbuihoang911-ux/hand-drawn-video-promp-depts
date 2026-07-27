@@ -1,0 +1,16 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+build/
+tmp/
+*.log
+*.mov
+*.mp4
+*.webm
+
+# Local research, staging and unrelated experiments
+work/
+docs/superpowers/
