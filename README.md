@@ -19,6 +19,15 @@ Most AI video workflows break between script analysis and visual generation. A s
 
 This skill standardizes the middle layer: script → visual metaphor → still frame → image-to-video motion.
 
+## Demo
+
+Two vertical examples generated with this visual workflow:
+
+- [Demo 722 — 32 seconds](demo/hand-drawn-video-demo-722.mp4)
+- [Demo 723 — 41 seconds](demo/hand-drawn-video-demo-723.mp4)
+
+The files are kept as original 9:16 MP4s so visitors can download or preview the actual output.
+
 ## Visual baseline
 
 - Modern Q-version crayon editorial illustration
@@ -78,6 +87,7 @@ hand-drawn-video-prompts/
 │   ├── SKILL.zh-CN.md            # Chinese skill reference
 │   └── references/
 ├── outputs/                      # Public prompt examples and tests
+├── demo/                         # Vertical demonstration videos
 ├── README.md                     # English documentation
 └── README.zh-CN.md               # 中文文档
 ```

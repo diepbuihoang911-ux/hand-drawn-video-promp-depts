@@ -10,6 +10,8 @@ tmp/
 *.mov
 *.mp4
 *.webm
+!demo/
+!demo/*.mp4
 
 # Local research, staging and unrelated experiments
 work/

@@ -22,6 +22,15 @@ Hand-Drawn Video Prompts 面向 AI 解说、财经观察、科技评论和知识
 
 这个 Skill 把“文案理解 → 视觉隐喻 → 静帧 → 图生视频”的中间层固定下来，让创作者可以批量复制、生成和组装。
 
+## 视频 Demo
+
+两个使用这套视觉流程生成的竖版示例：
+
+- [Demo 722｜32 秒](demo/hand-drawn-video-demo-722.mp4)
+- [Demo 723｜41 秒](demo/hand-drawn-video-demo-723.mp4)
+
+视频保留为原始 9:16 MP4，方便直接下载或预览实际效果。
+
 ## 视觉基线
 
 默认风格是现代 Q 版蜡笔社论插画：
@@ -100,6 +109,7 @@ hand-drawn-video-prompts/
 │   ├── output-example.md            # 标准输出示例
 │   └── automation-workflow.md       # 自动成片工作流边界
 ├── outputs/                         # 公开示例提示词与测试输出
+├── demo/                            # 竖版演示视频
 └── work/                            # 研究过程与测试记录
 ```
 
