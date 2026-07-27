@@ -1,9 +1,9 @@
 ---
-name: hand-drawn-card-skill
+name: hand-drawn-video-prompts
 description: Use when a user provides a Chinese voiceover script and needs either copy-ready vertical B-roll prompts or an automatically assembled 9:16 video with generated visuals, voiceover, captions and export in a modern Q-version crayon editorial style.
 ---
 
-# Hand-drawn-Card-skill
+# Hand-Drawn Video Prompts
 
 把一段中文口播稿拆成可执行的 9:16 B-roll 镜头，并按用户选择输出提示词包，或在当前可接入的视频工作流中自动生成、配音、加字幕、组装并导出成片。默认采用现代 Q 版蜡笔社论插画风格。
 

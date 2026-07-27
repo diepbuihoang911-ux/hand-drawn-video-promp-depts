@@ -1,8 +1,8 @@
-# Hand-drawn-Card-skill
+# Hand-Drawn Video Prompts
 
 把一段中文口播稿，拆成可以直接复制到 Flow / Nano Banana 的 9:16 视觉提示词。
 
-Hand-drawn-Card-skill 面向 AI 解说、财经观察、科技评论和知识型短视频创作者，默认输出：
+Hand-Drawn Video Prompts 面向 AI 解说、财经观察、科技评论和知识型短视频创作者，默认输出：
 
 - 4–6 秒一个的语义镜头
 - 英文 Flow 生图提示词
@@ -91,7 +91,7 @@ AI 让想法变得更便宜，但现实验证仍然很慢。
 ## 目录
 
 ```text
-hand-drawn-card-skill/
+hand-drawn-video-prompts/
 ├── SKILL.md                         # Skill 主规则
 ├── references/
 │   ├── style-guide.md               # 风格、色彩、构图、运动语法

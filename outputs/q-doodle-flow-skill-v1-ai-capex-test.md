@@ -1,4 +1,4 @@
-# Hand-drawn-Card-skill 1.0 测试输出｜AI CapEx
+# Hand-Drawn Video Prompts 1.0 测试输出｜AI CapEx
 
 测试口径：7 个镜头、每镜头 6 秒、9:16。画面只生成无文字静帧和动画；“约7000亿美元”“自由现金流逼近归零”等为后期准确关键词层。当前测试只包含既定 7 个 AI CapEx 镜头。
 
