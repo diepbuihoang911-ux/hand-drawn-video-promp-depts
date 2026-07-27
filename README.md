@@ -1,125 +1,95 @@
 # Hand-Drawn Video Prompts
 
-把一段中文口播稿，拆成可以直接复制到 Flow / Nano Banana 的 9:16 视觉提示词。
+English · [简体中文](README.zh-CN.md)
 
-Hand-Drawn Video Prompts 面向 AI 解说、财经观察、科技评论和知识型短视频创作者，默认输出：
+Turn a Chinese voiceover script into consistent 9:16 illustrated B-roll prompts for Flow, Nano Banana, and compatible video workflows.
 
-- 4–6 秒一个的语义镜头
-- 英文 Flow 生图提示词
-- 英文 Flow 图生视频提示词
-- 画面内嵌的中文短关键词
-- 中文口播对应关系和镜头视觉隐喻
-- 实体准确性提醒：国旗、公司、Logo、知名人物和数字
+Hand-Drawn Video Prompts is designed for AI explainers, finance commentary, technology analysis, and educational short-form video creators. It provides:
 
-## 为什么做这个 Skill
+- Semantic shots designed for roughly 4–6 seconds each
+- Copy-ready English image prompts for Flow and Nano Banana
+- Copy-ready English image-to-video prompts
+- Small Chinese keywords embedded directly in the artwork when requested
+- Visual metaphors tied to the original narration
+- Accuracy notes for flags, companies, logos, public figures, dates, and numbers
 
-很多 AI 视频工作流卡在两个地方：
+## Why it exists
 
-1. 文案有观点，但不知道每 5 秒应该画什么；
-2. 提示词能生成画面，却很难保持统一风格、固定背景和可用的字幕安全区。
+Most AI video workflows break between script analysis and visual generation. A strong argument still needs a clear visual idea every few seconds, and generated images often drift in style, background color, typography, and composition.
 
-这个 Skill 把“文案理解 → 视觉隐喻 → 静帧 → 图生视频”的中间层固定下来，让创作者可以批量复制、生成和组装。
+This skill standardizes the middle layer: script → visual metaphor → still frame → image-to-video motion.
 
-## 视觉基线
+## Visual baseline
 
-默认风格是现代 Q 版蜡笔社论插画：
+- Modern Q-version crayon editorial illustration
+- Vertical 9:16 composition
+- Fixed warm-white canvas: `#F8F6EF`
+- Extremely subtle, low-contrast paper grain
+- Thick imperfect black hand-drawn lines
+- Sunflower yellow, cobalt blue, and tomato red
+- Natural, restrained Q-version proportions
+- Two to four clear visual groups
+- Small Chinese keywords written directly on the paper, never as sticky notes or cards
+- Clear lower-third space reserved for subtitles
 
-- 9:16 竖版
-- 固定暖白画布：`#F8F6EF`
-- 极轻微纸张颗粒
-- 粗黑手绘线
-- 向日葵黄、钴蓝、番茄红
-- 自然、克制的 Q 版人物比例
-- 2–4 个清晰视觉组，避免海报式堆叠
-- 关键词直接写在纸面或物件旁，不使用便签纸、标签卡或独立白卡
-- 底部留给视频字幕
+## Quick start
 
-## 快速使用
+1. Load the skill in Codex.
+2. Paste a Chinese voiceover script.
+3. Ask for prompt-only output or a complete video workflow.
+4. Copy the English prompts into Flow or Nano Banana.
+5. Use the finished still as the Last Frame and a fixed `#F8F6EF` paper frame as the First Frame.
 
-1. 打开 Codex，并加载这个 Skill。
-2. 粘贴一段中文口播稿。
-3. 指定“只写提示词”或“生成完整视频”。
-4. 将每个英文提示词复制到 Flow / Nano Banana。
-5. 使用完成静帧作为图生视频的 Last Frame；使用固定的 `#F8F6EF` 空白纸作为 First Frame。
-
-示例请求：
+Example:
 
 ```text
-请把下面这段中文口播稿拆成 Flow 生图和图生视频提示词，关键词直接写在画面里，背景固定为 #F8F6EF，底部留字幕区：
+Break this Chinese voiceover into Flow image and image-to-video prompts. Put the small Chinese keyword directly in the illustration, keep the background at #F8F6EF, and reserve the bottom for subtitles:
 
-AI 让想法变得更便宜，但现实验证仍然很慢。
+AI makes ideas cheaper, but real-world validation is still slow.
 ```
 
-## 输出格式
+## Output format
 
-```text
-镜头 01
-对应口播：
-建议时长：
-视觉隐喻：
-画面中文关键词：
+Each shot includes:
 
-【Flow 生图提示词】
-<copy-ready English prompt>
+- Source narration
+- Suggested duration
+- Visual metaphor
+- Chinese on-image keyword
+- Flow image prompt
+- Flow image-to-video prompt
+- Entity accuracy notes
 
-【Flow 图生视频提示词】
-<copy-ready English prompt>
+## Entity accuracy
 
-【实体准确性提醒】
-<what needs a reference image or deterministic overlay>
-```
+The model can handle Q-version composition and motion, but it should not be trusted to reproduce every logo, flag, public-figure likeness, number, or long sentence exactly.
 
-## 重要设计决定
+- Flags: specify official structure, colors, proportions, and symbols; use a reference image or deterministic overlay when exactness matters.
+- Logos: use brand cues for generation and add the original logo as a reference or post-production layer when required.
+- Public figures: use clearly non-photorealistic Q-version identity cues such as hairstyle, glasses, clothing, pose, and props. Do not bypass safety restrictions or create realistic face clones.
+- Numbers, dates, and long text: reserve them for a deterministic subtitle or graphic layer.
 
-### 中文关键词不是贴纸
-
-关键词是插画的一部分，直接写在暖白纸面、留白处或相关物件旁。默认使用小号手写字，文字区域不超过画面高度的 10%–12%，绝不占用底部字幕区。
-
-### 真实实体要分层处理
-
-生成模型可以负责 Q 版构图、动作和环境，但不能保证精确复刻每一个 Logo、国旗、公司字标或知名人物脸部。
-
-- 国旗：写明官方结构、颜色、比例和符号；核心镜头建议使用参考图或原始素材叠加。
-- Logo：建议使用原始 Logo 作为参考图或后期叠加。
-- 知名人物：使用明显非写实的 Q 版漫画化身份锚点，不规避安全限制，不做写实人脸克隆。
-- 数字、日期和长句：优先留给确定性字幕层。
-
-### 背景颜色要固定
-
-“Warm white paper”不是精确色号。Skill 默认使用 `#F8F6EF`，并明确禁止黑色背景、灰褐偏色、米黄色渐变、暗角和镜头间底色漂移。若需要像素级一致，应使用固定 First Frame 或在后处理中统一填色。
-
-## 目录
+## Repository layout
 
 ```text
 hand-drawn-video-prompts/
-├── SKILL.md                         # Skill 主规则
-├── references/
-│   ├── style-guide.md               # 风格、色彩、构图、运动语法
-│   ├── output-example.md            # 标准输出示例
-│   └── automation-workflow.md       # 自动成片工作流边界
-├── outputs/                         # 公开示例提示词与测试输出
-└── work/                            # 研究过程与测试记录
+├── hand-drawn-video-prompts/
+│   ├── SKILL.md                  # English runtime skill
+│   ├── SKILL.zh-CN.md            # Chinese skill reference
+│   └── references/
+├── outputs/                      # Public prompt examples and tests
+├── README.md                     # English documentation
+└── README.zh-CN.md               # 中文文档
 ```
 
-## 公开示例
+## Current scope
 
-- [AI CapEx Flow 图生视频提示词](outputs/flow-image-to-video-prompts-ai-capex-01-07.md)
-- [AI CapEx Skill 测试输出](outputs/q-doodle-flow-skill-v1-ai-capex-test.md)
-- [Nano Banana / Flow 提示词示例](outputs/flow-nano-q-doodle-prompts.md)
-- [视觉风格参考图](outputs/q-doodle-style-reference.png)
+This is a prompt and visual-decomposition skill. It does not include Flow or Nano Banana API calls, an image/video generation service, complex version management, or pixel-perfect guarantees for generated media.
 
-## 当前边界
-
-这是一个提示词和视觉拆解 Skill，不包含：
-
-- Flow / Nano Banana API 自动调用
-- 自动生图服务部署
-- 自动生成视频服务部署
-- 复杂版本管理
-- 对生成结果的像素级一致性保证
-
-它可以与 Flow、Nano Banana、ChatCut 等工具配合使用。自动成片模式的可用能力取决于当前账号、工具权限和浏览器连接状态。
+It can be combined with Flow, Nano Banana, ChatCut, and other compatible tools.
 
 ## License
 
-MIT License。欢迎 fork、改进和提交新的风格参考或输出示例。
+MIT License. Contributions, translations, and new style references are welcome.
+
+中文说明：[README.zh-CN.md](README.zh-CN.md)

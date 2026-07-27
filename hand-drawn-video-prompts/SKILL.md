@@ -1,92 +1,93 @@
 ---
 name: hand-drawn-video-prompts
-description: Use when a user provides a Chinese voiceover script and needs either copy-ready vertical B-roll prompts or an automatically assembled 9:16 video with generated visuals, voiceover, captions and export in a modern Q-version crayon editorial style.
+description: Use when a user provides a Chinese voiceover script and needs copy-ready vertical B-roll prompts or an assembled 9:16 video in a modern Q-version crayon editorial style.
 ---
 
 # Hand-Drawn Video Prompts
 
-把一段中文口播稿拆成可执行的 9:16 B-roll 镜头，并按用户选择输出提示词包，或在当前可接入的视频工作流中自动生成、配音、加字幕、组装并导出成片。默认采用现代 Q 版蜡笔社论插画风格。
+Turn a Chinese voiceover script into executable 9:16 B-roll shots. Depending on the requested mode, provide copy-ready prompts or continue through the available video, voiceover, caption, timeline, and export workflow.
 
-默认画布底色固定为暖白色 `#F8F6EF`。所有镜头必须保持同一底色，只允许极轻微、低对比度的纸张颗粒；禁止黑色、灰褐色、米黄色渐变、彩色背景、边缘暗角和不同镜头之间的底色漂移。需要像素级一致时，使用同一张固定底图作为参考或在后处理中统一填充颜色，不能把生成模型的“暖白”理解为精确色号。
+The default visual language is modern Q-version crayon editorial illustration on a fixed warm-white canvas, `#F8F6EF`.
 
-## 运行模式
+## Modes
 
-- **提示词模式**：只输出镜头拆解、Nano Banana/Flow 提示词和中文后期关键词；不调用媒体生成或导出工具。
-- **自动成片模式**：在用户明确要求“直接生成视频/成片/带字幕”时，读取 [references/automation-workflow.md](references/automation-workflow.md)，调用当前可接入的视频、配音、转录/字幕、时间线和导出工具完成流程。
+- **Prompt mode:** output shot breakdowns, Nano Banana/Flow prompts, and Chinese on-image keywords without calling media-generation or export tools.
+- **Complete-video mode:** when the user explicitly asks for a complete video, read [references/automation-workflow.md](references/automation-workflow.md) and use the currently available video, voiceover, transcription/caption, timeline, and export tools.
 
-如果用户没有指定模式，且给出了完整文稿并要求“做成视频”，默认使用自动成片模式；如果只说“写提示词”，使用提示词模式。
+If the user supplies a full script and asks to make a video without specifying a mode, use complete-video mode. If they ask only for prompts, use prompt mode.
 
-### 中文关键词显示模式
+## Non-negotiable visual rules
 
-默认把每个镜头的中文关键词直接纳入画面设计，而不是只作为后期备注：
+- Use vertical 9:16 composition and a solid warm-white canvas with exact base color `#F8F6EF`.
+- Allow only extremely subtle, low-contrast paper grain. Never use black, gray-brown, beige gradients, colored backgrounds, vignettes, or drifting background colors.
+- Use thick imperfect black hand-drawn lines, sunflower yellow, cobalt blue, and tomato red.
+- Keep people natural and restrained in Q-version proportions. Do not use giant heads, tiny bodies, bulging eyes, photorealistic faces, 3D rendering, cyber HUDs, or vintage newspaper styling.
+- Use two to four readable visual groups and leave generous upper and lower breathing room.
+- Keep subtitles out of the generated artwork's lower area.
 
-- 卡片镜头优先在画面上方或左右侧预留小型文字安全区，绝不把大字放在底部字幕区；关键词控制在 2–8 个汉字，使用小号、清晰、直接画在纸面上的手写字，文字块不超过画面高度的 10%–12%。
-- 中文关键词就是画面里的文字，不要做成便签纸、标签卡、贴纸、圆角文字框、标题面板或独立白色卡片。文字可以悬浮在留白处，或直接写在相关物件旁边，但必须保持清晰、固定、不变形。
-- 动态镜头中关键词保持原位，只允许整幅纸面或旁边物件产生轻微动作；不要让文字参与旋转、液体变形、奔跑或复杂遮挡。
-- 每条输出增加“画面中文关键词”字段。文字准确率风险较高时，同时给出推荐文字版和无文字安全版。
-- 公司名、金额、日期和长句仍优先留给确定性字幕层；需要直接生成时，只使用用户指定的短关键词，不擅自改字。
+## Chinese keyword mode
 
-### 真实实体准确性
+By default, place the requested short Chinese keyword directly on the paper or beside the relevant object:
 
-涉及国旗、公司、Logo 或知名人物时，不能只写一个泛化名词，必须建立实体锚点并标注准确性边界：
+- Use two to eight Chinese characters in small, clear hand-drawn lettering.
+- Keep the text in a top or side safe area, never in the bottom subtitle area.
+- Keep the text block under 10–12% of the frame height.
+- Do not use sticky notes, label cards, stickers, rounded text boxes, title panels, or isolated white cards.
+- In video prompts, keep the lettering fixed and legible. Do not let it rotate, melt, run, or morph.
+- For long text, dates, amounts, company names, and exact claims, use a deterministic subtitle or graphic layer instead.
 
-- **国旗**：明确国家和官方旗帜结构、颜色、比例及主要符号；禁止替换成相似国家旗帜或随机彩旗。若旗帜必须完全准确，优先使用用户提供的旗帜参考图或后期叠加原始旗帜素材。
-- **公司与 Logo**：公司身份用行业、产品、设备和品牌色辅助表现；不要让模型凭空重绘精确 Logo。需要准确 Logo 时，使用用户提供的原始 Logo 作为参考图或后期叠加。
-- **知名人物**：可以使用合规的非写实 Q 版漫画化表现，使用发型、眼镜、服装、姿势和职业道具等公开身份锚点；不得尝试绕过安全限制、伪造写实人脸或制造误导性真实影像。需要高相似度时，使用用户有权提供的参考图，并保持明显插画化处理。
-- 输出中增加“实体准确性提醒”：哪些元素可以交给生成模型，哪些必须用参考图或确定性图层校正。
+When text accuracy is uncertain, provide both a recommended text version and a text-free safe version.
 
-## 先读哪些参考
+## Entity accuracy
 
-- 需要完整视觉风格、构图、禁止项或运动语法时，读取 [references/style-guide.md](references/style-guide.md)。
-- 需要看当前 AI CapEx 题材的成品格式时，读取 [references/output-example.md](references/output-example.md)。
-- 需要实际生成视频、配音、字幕或导出时，读取 [references/automation-workflow.md](references/automation-workflow.md)。
+When flags, companies, logos, or public figures appear, create an explicit entity anchor and state the accuracy boundary:
 
-## 工作流程
+- **Flags:** specify the country, official structure, colors, proportions, and key symbols. Never substitute a similar flag or a random colored banner. Use a reference image or original asset overlay when exactness matters.
+- **Companies and logos:** use industry, product, device, and brand-color cues. Do not ask the model to recreate an exact logo from memory. Use a supplied original logo as a reference or post-production layer when necessary.
+- **Public figures:** use a clearly non-photorealistic Q-version caricature with identity cues such as hairstyle, glasses, clothing, pose, and props. Do not bypass safety restrictions or create realistic face clones.
+- **Numbers and dates:** reserve exact figures for deterministic text layers whenever possible.
 
-1. 估算口播时长；默认每镜头承载 4–6 秒，约 40 秒通常拆 6–10 镜头。少于约 15 秒输出 3–4 镜头；超过约 60 秒先说明预计镜头数，再直接完整输出。
-2. 按观点转折、因果、案例切换和结论拆分，不机械按标点。一个镜头只表达一个核心意思；不要为热闹添加无关角色或装饰。
-3. 为每镜头写一句可一秒读懂的视觉隐喻，优先使用追逐、吞噬、天平、考试、裂缝、岔路等关系。
-4. 为每镜头输出完整模板；不要求用户逐镜头确认。
-5. 最后做质量检查，缺字段或缺约束时补齐后再交付。
+Always include an entity accuracy note in the output.
 
-自动成片模式在镜头拆解完成后，继续按自动化参考执行，不把中间提示词交给用户逐条确认；只保留最终成片复核。
+## Workflow
 
-## 固定输出模板
+1. Estimate the narration duration. Default to one semantic shot every 4–6 seconds.
+2. Split on argument turns, causal changes, examples, and conclusions rather than punctuation alone.
+3. Give each shot one clear visual metaphor.
+4. Write a complete, self-contained template for every shot; do not rely on “same as above.”
+5. Run the quality check below before delivering.
+
+## Required output template
 
 ```text
-镜头 01
-对应口播：
-建议时长：
-视觉隐喻：
-后期关键词：
+Shot 01
+Source narration:
+Suggested duration:
+Visual metaphor:
+Chinese on-image keyword:
 
-【Flow 生图提示词】
-<完整、自包含的英文提示词>
+[Flow image prompt]
+<complete, self-contained English prompt>
 
-【Flow 图生视频提示词】
-<完整、自包含的英文提示词>
+[Flow image-to-video prompt]
+<complete, self-contained English prompt>
+
+[Entity accuracy note]
+<reference-image or deterministic-layer guidance>
 ```
 
-## 生图提示词要求
+## Prompt requirements
 
-每条都必须自包含，并明确写出：vertical 9:16；solid warm-white canvas background, exact base color #F8F6EF；具体人物/物件；可执行动作；主要视觉隐喻；各组的位置关系；粗黑手绘线、向日葵黄/钴蓝/番茄红；主体约占 60%–70% 宽度并保留上下留白。启用中文关键词显示模式时，提示词必须包含指定中文关键词、位于顶部或侧边安全区、small readable hand-drawn lettering directly on the paper、文字块不超过画面高度 10%–12%、避开底部字幕区，并明确禁止 sticky note、label card、sticker、rounded text box、title panel 和 isolated white card；输出无文字安全版时，才写无文字、无 Logo、无数字、无水印、无写实、无 3D。
+Every image prompt must independently state: vertical 9:16; solid warm-white canvas, exact base color `#F8F6EF`; concrete people and objects; an executable action; the visual metaphor; spatial relationships; thick black hand-drawn lines; the three-color palette; a subject group occupying roughly 60–70% of the width; and upper/lower breathing room.
 
-涉及真实公司、人物、日期、金额或长句时，只描述身份锚点或留白安全区；短中文关键词按用户要求直接写在画面纸面或相关物件旁，并标明文字准确率风险。人物自然 Q 版，不能使用巨头小身、凸眼、写实 AI 人脸。默认每镜头 1–2 个主要人物、2–4 个主要物件，避免复杂堆叠塔、过多小人、海报式信息堆满画面。
+Every image-to-video prompt should default to about five seconds and use the supplied finished still as the final composition. For Flow First + Last, state that the blank warm-white paper is the First Frame and the finished still is the Last Frame. Use a locked camera, rigid paper cutouts, tactile paper stop-motion, no camera drift/zoom/parallax, no lip sync, no added characters/logos, and no audio.
 
-## 图生视频提示词要求
+## Quality check
 
-默认约 5 秒、9:16，并把上传完成静帧视为最终构图与风格参考：从完全空的暖白纸开始，基础物件先滑入/手绘出现，人物和次要物件依次卡位，关系元素与核心动作最后完成，最后约 0.8 秒贴近尾帧并保持。必须写明 locked camera、rigid paper cutouts、tactile paper stop-motion、no camera drift/zoom/parallax、no lip sync、no added characters/logos、no audio；启用中文关键词时，额外写明文字直接留在纸面或物件旁、避开底部字幕区、保持小而清晰不变形，不新增其他文字或文字容器。
+- Every shot has one core meaning, a reasonable duration, and all required fields.
+- Every prompt is self-contained and consistent in aspect ratio, exact background color, linework, and palette.
+- Exact numbers, dates, logos, flags, and long text are marked for deterministic treatment.
+- Public figures are handled as non-photorealistic Q-version illustrations without safety bypasses.
+- No API configuration, complex version management, or unnecessary confirmation gates are added to prompt mode.
 
-若使用 Flow 的 First + last，明确空白暖白纸为 First Frame、对应完成静帧为 Last Frame。若只能上传单张完成图，改用原地微动作规则，不要求空纸开场；具体写法见风格参考。
-
-## 质量检查
-
-- 镜头数量与时长合理，且每镜头只有一个核心意思；
-- 所有镜头均有四个中文字段和两类英文提示词；
-- 每条英文提示词独立包含风格、构图、动作和禁止项，不依赖“同上”；
-- 同一批提示词统一 9:16、#F8F6EF 固定底色、粗黑线和三色板；
-- 事实数字、公司名、Logo、日期和长句优先留给后期确定性图层；短中文关键词按用户要求直接纳入画面，并标明文字准确率风险；不联网核验，不改写用户观点；
-- 国旗、Logo、公司身份和知名人物必须通过实体锚点检查；模型无法保证精确时，不把生成结果描述为准确复刻；
-- 不出现 API 配置、自动媒体生成步骤、复杂版本管理或额外确认闸门。
-
-提示词模式不执行媒体生成；自动成片模式的媒体生成步骤见自动化参考，不应把这些步骤误写进提示词模式的最终输出。
+中文参考：[SKILL.zh-CN.md](SKILL.zh-CN.md)
