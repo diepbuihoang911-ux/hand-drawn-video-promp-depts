@@ -5,7 +5,7 @@
 每条生图提示词都重复以下核心约束，避免批次漂移：
 
 ```text
-modern Q-version crayon editorial illustration, vertical 9:16, solid warm-white canvas background, exact base color #F8F6EF, only extremely subtle low-contrast paper grain, thick imperfect black hand-drawn marker/crayon outlines, bold flat wax-crayon blocks, sunflower yellow, saturated cobalt blue and vivid tomato red with only a small muted-green accent, natural restrained Q-version proportions, simple editorial composition, 2–4 large readable visual groups, generous breathing room, no glossy rendering, no realistic lighting, no logos, no watermark, no photorealism, no 3D
+modern Q-version hand-drawn crayon illustration, vertical 9:16, solid warm-white canvas background, exact base color #F8F6EF, only extremely subtle low-contrast paper grain, thick imperfect black hand-drawn marker/crayon outlines, bold flat wax-crayon blocks, sunflower yellow, saturated cobalt blue and vivid tomato red with only a small muted-green accent, natural restrained Q-version proportions, simple hand-drawn composition, 2–4 large readable visual groups, generous breathing room, no glossy rendering, no realistic lighting, no logos, no watermark, no photorealism, no 3D
 ```
 
 ## 固定背景色

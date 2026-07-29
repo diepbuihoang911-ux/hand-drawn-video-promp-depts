@@ -28,9 +28,11 @@ Two vertical examples generated with this visual workflow:
 
 The files are kept as original 9:16 MP4s so visitors can download or preview the actual output.
 
+The workflow can also turn recognizable technology figures—such as Elon Musk, Jensen Huang, and Mark Zuckerberg—into clearly non-photorealistic Q-version characters using safe identity cues like hairstyle, glasses, clothing, pose, and props.
+
 ## Visual baseline
 
-- Modern Q-version crayon editorial illustration
+- Modern Q-version hand-drawn crayon illustration
 - Vertical 9:16 composition
 - Fixed warm-white canvas: `#F8F6EF`
 - Extremely subtle, low-contrast paper grain

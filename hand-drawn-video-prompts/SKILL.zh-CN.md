@@ -1,11 +1,11 @@
 ---
 name: hand-drawn-video-prompts
-description: Use when a user provides a Chinese voiceover script and needs either copy-ready vertical B-roll prompts or an automatically assembled 9:16 video with generated visuals, voiceover, captions and export in a modern Q-version crayon editorial style.
+description: Use when a user provides a Chinese voiceover script and needs either copy-ready vertical B-roll prompts or an automatically assembled 9:16 video with generated visuals, voiceover, captions and export in a modern Q-version hand-drawn crayon style.
 ---
 
 # Hand-Drawn Video Prompts
 
-把一段中文口播稿拆成可执行的 9:16 B-roll 镜头，并按用户选择输出提示词包，或在当前可接入的视频工作流中自动生成、配音、加字幕、组装并导出成片。默认采用现代 Q 版蜡笔社论插画风格。
+把一段中文口播稿拆成可执行的 9:16 B-roll 镜头，并按用户选择输出提示词包，或在当前可接入的视频工作流中自动生成、配音、加字幕、组装并导出成片。默认采用现代 Q 版手绘蜡笔插画风格。
 
 默认画布底色固定为暖白色 `#F8F6EF`。所有镜头必须保持同一底色，只允许极轻微、低对比度的纸张颗粒；禁止黑色、灰褐色、米黄色渐变、彩色背景、边缘暗角和不同镜头之间的底色漂移。需要像素级一致时，使用同一张固定底图作为参考或在后处理中统一填充颜色，不能把生成模型的“暖白”理解为精确色号。
 

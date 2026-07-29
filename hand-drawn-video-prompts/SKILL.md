@@ -1,13 +1,13 @@
 ---
 name: hand-drawn-video-prompts
-description: Use when a user provides a Chinese voiceover script and needs copy-ready vertical B-roll prompts or an assembled 9:16 video in a modern Q-version crayon editorial style.
+description: Use when a user provides a Chinese voiceover script and needs copy-ready vertical B-roll prompts or an assembled 9:16 video in a modern Q-version hand-drawn crayon style.
 ---
 
 # Hand-Drawn Video Prompts
 
 Turn a Chinese voiceover script into executable 9:16 B-roll shots. Depending on the requested mode, provide copy-ready prompts or continue through the available video, voiceover, caption, timeline, and export workflow.
 
-The default visual language is modern Q-version crayon editorial illustration on a fixed warm-white canvas, `#F8F6EF`.
+The default visual language is modern Q-version hand-drawn crayon illustration on a fixed warm-white canvas, `#F8F6EF`.
 
 ## Modes
 
