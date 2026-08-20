@@ -16,7 +16,7 @@ AI解説、金融・ビジネス考察、テクノロジー評論、教育系シ
 
 <br/>
 
-<img src="outputs/q-doodle-style-reference.png" alt="手描き風ビジュアルリファレンス" width="800">
+<img src="outputs/q-doodle-style-reference.png" alt="手描き風ビジュアルリファレンス" width="340">
 
 <br/>
 

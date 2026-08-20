@@ -16,7 +16,7 @@ An open-source AI Skill designed for AI explainers, financial commentary, tech i
 
 <br/>
 
-<img src="outputs/q-doodle-style-reference.png" alt="Hand-Drawn Video Style Reference Preview" width="800">
+<img src="outputs/q-doodle-style-reference.png" alt="Hand-Drawn Video Style Reference Preview" width="340">
 
 <br/>
 

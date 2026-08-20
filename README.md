@@ -16,7 +16,7 @@
 
 <br/>
 
-<img src="outputs/q-doodle-style-reference.png" alt="手绘风视频风格参考预览" width="800">
+<img src="outputs/q-doodle-style-reference.png" alt="手绘风视频风格参考预览" width="340">
 
 <br/>
 

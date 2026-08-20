@@ -16,7 +16,7 @@ AI 지식 해설, 테크/경제 리뷰, 교육용 숏폼 크리에이터를 위�
 
 <br/>
 
-<img src="outputs/q-doodle-style-reference.png" alt="손그림 스타일 레퍼런스" width="800">
+<img src="outputs/q-doodle-style-reference.png" alt="손그림 스타일 레퍼런스" width="340">
 
 <br/>
 

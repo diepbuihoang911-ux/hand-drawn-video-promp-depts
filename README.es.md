@@ -16,7 +16,7 @@ Un Skill de IA de código abierto diseñado para creadores de videos explicativo
 
 <br/>
 
-<img src="outputs/q-doodle-style-reference.png" alt="Referencia de Estilo Visual" width="800">
+<img src="outputs/q-doodle-style-reference.png" alt="Referencia de Estilo Visual" width="340">
 
 <br/>
 
