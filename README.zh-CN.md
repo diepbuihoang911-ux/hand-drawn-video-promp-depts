@@ -1,61 +1,123 @@
-# 手绘风视频提示词生成器 (Hand-Drawn Video Prompts)
+<div align="center">
 
-[简体中文](README.md) · [English](README.en.md)
+[**简体中文**](README.md) · [English](README.en.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Español](README.es.md)
 
-把一段中文口播稿，拆成可以直接复制到 Flow / Nano Banana 的 9:16 视觉提示词。
+# 🖍️ Hand-Drawn Video Prompts (手绘风视频提示词生成器)
 
-Hand-Drawn Video Prompts 面向 AI 解说、财经观察、科技评论和知识型短视频创作者，默认输出：
+### 把中文口播文案，一键转为 9:16 现代 Q 版手绘蜡笔风短视频生图与图生视频提示词
 
-- 4–6 秒一个的语义镜头
-- 英文 Flow 生图提示词
-- 英文 Flow 图生视频提示词
-- 画面内嵌的中文短关键词
-- 中文口播对应关系和镜头视觉隐喻
-- 实体准确性提醒：国旗、公司、Logo、科技人物和数字
+一款专为 AI 解说、财经观察、科技评论与知识型短视频创作者打造的开源 Skill。将文案自动拆解为 4–6 秒语义镜头、视觉隐喻、英文生图 Prompt、图生视频 Prompt 与内嵌手绘关键词，彻底解决生成画风漂移、背景不统一与字幕遮挡痛点。
 
-## 为什么做这个 Skill
+![Codex Skill](https://img.shields.io/badge/Codex-Skill-111827?style=flat-square)
+![生成平台](https://img.shields.io/badge/视频平台-Flow%20%7C%20Nano%20Banana-0066ff?style=flat-square)
+![画幅比例](https://img.shields.io/badge/画幅-9%3A16%20竖版短视频-f59e0b?style=flat-square)
+![视觉基线](https://img.shields.io/badge/风格-Q版蜡笔手绘-8b5cf6?style=flat-square)
+![MIT License](https://img.shields.io/badge/License-MIT-16a34a?style=flat-square)
 
-很多 AI 视频工作流卡在两个地方：
+<br/>
 
-1. 文案有观点，但不知道每 5 秒应该画什么；
-2. 提示词能生成画面，却很难保持统一风格、固定背景和可用的字幕安全区。
+<img src="outputs/q-doodle-style-reference.png" alt="手绘风视频风格参考预览" width="800">
 
-这个 Skill 把“文案理解 → 视觉隐喻 → 静帧 → 图生视频”的中间层固定下来，让创作者可以批量复制、生成和组装。
+<br/>
 
-## 视频 Demo
+适用于：**AI 科技解说、财经商业观察、知识科普短视频、商业模式拆解、小红书/抖音/视频号/TikTok/Shorts 爆款内容创作**。
 
-两个使用这套视觉流程生成的竖版示例：
+</div>
 
-- [Demo 722｜32 秒](demo/hand-drawn-video-demo-722.mp4)
-- [Demo 723｜41 秒](demo/hand-drawn-video-demo-723.mp4)
+---
 
-视频保留为原始 9:16 MP4，方便直接下载或预览实际效果。
+## ✨ 核心亮点 (Features)
 
-## 视觉基线
+- ⏱️ **4–6 秒黄金语义镜头拆解**：告别机械字数断句，紧扣口播逻辑节拍、观点推进与情绪转折精准分镜。
+- 🖍️ **现代 Q 版蜡笔手绘美学**：锁定 `#F8F6EF` 暖白纸张底色、自然粗黑手绘线条与向日葵黄/钴蓝/番茄红经典点缀。
+- 🎬 **生图 + 图生视频双重 Prompt 交付**：直接输出适用于 Flow / Nano Banana 的英文生图提示词与图生视频运动提示词，复制即用。
+- ✍️ **手绘级内嵌中文关键词**：短词自然书写于纸面或物体旁，融入插画整体，杜绝突兀便利贴，并严格预留底部字幕安全区。
+- 🧑‍💼 **科技与商业人物 Q 版化**：将马斯克、黄仁勋（老黄）、扎克伯格等知名人物转化为高辨识度 Q 版卡通形象（发型、眼镜、皮衣、特征道具）。
+- 🎯 **实体准确性分层提醒**：针对国旗、品牌 Logo、关键数字与长文本提供精准参考图建议与后处理层分流，确保内容严谨可信。
 
-默认风格是现代 Q 版手绘蜡笔插画：
+---
 
-- 9:16 竖版
-- 固定暖白画布：`#F8F6EF`
-- 极轻微纸张颗粒
-- 粗黑手绘线
-- 向日葵黄、钴蓝、番茄红
-- 自然、克制的 Q 版人物比例
-- 2–4 个清晰视觉组，避免海报式堆叠
-- 关键词直接写在纸面或物件旁，不使用便签纸、标签卡或独立白卡
-- 底部留给视频字幕
+## 🎬 视频动态效果直观展示 (Video Showcase)
 
-也可以把马斯克、黄仁勋（老黄）、扎克伯格等科技人物转成明显非写实的 Q 版角色，通过发型、眼镜、服装、姿势和职业道具保留身份辨识度。
+无需下载或跳转，直接查看通过本工作流生成的竖版短视频动态预览（**点击动图可直接打开带声音的完整高清视频**）：
 
-## 快速使用
+<div align="center">
 
-1. 打开 Codex，并加载这个 Skill。
-2. 粘贴一段中文口播稿。
-3. 指定“只写提示词”或“生成完整视频”。
-4. 将每个英文提示词复制到 Flow / Nano Banana。
-5. 使用完成静帧作为图生视频的 Last Frame；使用固定的 `#F8F6EF` 空白纸作为 First Frame。
+| 📱 案例一：AI 资本支出与商业闭环 (Demo 722) | 📱 案例二：技术落地与现实验证 (Demo 723) |
+|:---:|:---:|
+| <a href="demo/hand-drawn-video-demo-722.mp4"><img src="demo/hand-drawn-video-demo-722.gif" alt="Demo 722 动态演示" width="320"></a> | <a href="demo/hand-drawn-video-demo-723.mp4"><img src="demo/hand-drawn-video-demo-723.gif" alt="Demo 723 动态演示" width="320"></a> |
+| ⏱️ **32 秒成片** · [点击打开原片 🔊](demo/hand-drawn-video-demo-722.mp4) | ⏱️ **41 秒成片** · [点击打开原片 🔊](demo/hand-drawn-video-demo-723.mp4) |
 
-示例请求：
+</div>
+
+---
+
+## 📋 提示词生成范例 (Example Prompts)
+
+<div align="center">
+
+| 镜头 01 静帧样片 (`#F8F6EF` 底色) | 镜头 02 静帧样片 (视觉隐喻构图) |
+|:---:|:---:|
+| <img src="outputs/q-doodle-shot-01.png" alt="镜头01样片" width="320"> | <img src="outputs/q-doodle-shot-02.png" alt="镜头02样片" width="320"> |
+
+</div>
+
+### 🎬 镜头 01: 科技巨头算力军备竞赛
+> **对应口播**：“四大科技巨头一年砸了 2000 亿美金买卡，但华尔街开始问：回报究竟在哪里？”  
+> **建议时长**：5 秒  
+> **视觉隐喻**：四个 Q 版巨头推着装满发光芯片的独轮车冲向高山，上方有一双戴着金戒指的华尔街大手拿着放大镜审视。  
+> **画面中文关键词**：“2000亿”
+
+```text
+【Flow 生图提示词】
+Modern minimalist crayon doodle illustration, vertical 9:16, warm off-white fine-textured paper background #F8F6EF, thick imperfect black ink outlines. Four cute expressive chibi tech executives in simple business attire pushing wheelbarrows piled high with glowing GPU microchips toward a steep mountain peak. In the clean upper sky, a giant whimsical hand with a gold ring holds a magnifying glass inspecting them. Warm sunlight yellow, cobalt blue, tomato red accents. Hand-drawn Chinese text "2000亿" naturally written in black crayon on the side of a wheelbarrow. Clear composition with generous negative space, empty clean area at bottom reserved for subtitles.
+
+【Flow 图生视频提示词】
+Gentle 2D hand-drawn stop-motion animation. The four chibi executives strain forward cheerfully pushing their wheelbarrows, wheels wobbling slightly. The magnifying glass in the sky pans smoothly from left to right as a beam of warm light highlights the glowing chips. Tiny paper-grain particles float subtly in the air. Fixed #F8F6EF background color with zero flicker.
+```
+
+---
+
+## 🛠️ 创作工作流 (Workflow)
+
+```mermaid
+flowchart LR
+    A[1. 粘贴中文口播稿] --> B[2. Skill 自动拆解 4-6s 镜头与隐喻]
+    B --> C[3. 输出 Flow / Nano 英文 Prompt]
+    C --> D[4. 复制至模型生成静帧与视频]
+    D --> E[5. 剪映对齐字幕与原声音频]
+```
+
+1. **输入文案**：粘贴一段 30–60 秒的中文口播或解说词。
+2. **智能分镜**：Skill 自动分析语义，划分节奏，匹配直观幽默的视觉隐喻并提炼画面关键词。
+3. **获取双 Prompt**：生成对应的英文生图 Prompt（包含固定 `#F8F6EF` 背景与构图约束）及图生视频运动 Prompt。
+4. **视频生成**：复制生图 Prompt 至 Flow / Nano Banana 生成完成静帧；再将静帧作为 Last Frame、空白暖白纸作为 First Frame 生成视频。
+5. **快速剪辑**：导入剪映或 Premiere，无缝拼接视频片段并自动对齐字幕。
+
+---
+
+## 📦 安装与使用 (Installation)
+
+### 在 Antigravity / Gemini CLI / Codex 中安装：
+
+克隆本项目仓库：
+
+```bash
+git clone https://github.com/kaomei/hand-drawn-video-prompts.git
+cd hand-drawn-video-prompts
+```
+
+复制技能文件至你的 skills 目录：
+
+```bash
+# Antigravity / Gemini CLI
+cp -R hand-drawn-video-prompts ~/.gemini/config/skills/hand_drawn_video_prompts
+
+# Codex CLI
+cp -R hand-drawn-video-prompts "${CODEX_HOME:-$HOME/.codex}/skills/hand_drawn_video_prompts"
+```
+
+在对话中输入：
 
 ```text
 请把下面这段中文口播稿拆成 Flow 生图和图生视频提示词，关键词直接写在画面里，背景固定为 #F8F6EF，底部留字幕区：
@@ -63,81 +125,34 @@ Hand-Drawn Video Prompts 面向 AI 解说、财经观察、科技评论和知识
 AI 让想法变得更便宜，但现实验证仍然很慢。
 ```
 
-## 输出格式
+---
 
-```text
-镜头 01
-对应口播：
-建议时长：
-视觉隐喻：
-画面中文关键词：
+## 🎨 视觉基线规范 (Visual Baseline)
 
-【Flow 生图提示词】
-<copy-ready English prompt>
+| 维度 | 规范标准 | 核心设计意图 |
+|---|---|---|
+| **画布底色** | 固定纯色 `#F8F6EF` | 杜绝暗角、脏色渐变与镜头间底色闪烁 |
+| **线条质感** | 粗黑不规则手绘墨线 (Thick crayon lines) | 营造质朴、温润、极具亲和力的手作质感 |
+| **色彩搭配** | 向日葵黄 + 钴蓝 + 番茄红 (三原色点缀) | 主次分明，色彩克制，避免视觉疲劳 |
+| **画面留白** | 2–4 个主要视觉组，底部 15% 绝对留白 | 确保移动端信息流中不被平台 UI 和字幕遮挡 |
+| **文字内嵌** | 仅保留 2–4 字短词，写在纸面或物体表面 | 与画面融为一体，不使用白卡贴纸或卡片框 |
 
-【Flow 图生视频提示词】
-<copy-ready English prompt>
+---
 
-【实体准确性提醒】
-<what needs a reference image or deterministic overlay>
-```
+## ⚠️ 免责声明与版权提示 (Disclaimer)
 
-## 重要设计决定
+1. **非官方声明**：本项目（`hand-drawn-video-prompts`）为一个开源的 AI 提示词工程规范与创作模板，**与文中涉及的任何科技公司、公众人物或生成模型平台均无商业合作或关联**。
+2. **公众人物与商标**：涉及的科技人物（如马斯克、黄仁勋等）仅采用明显非写实的 Q 版艺术化表现，严禁用于伪造身份或侵权；公司 Logo 与商标建议在后期确定性图层添加。
+3. **用途限定**：本 Skill 生成的提示词仅供个人学习、技术探索与合规的自媒体视频创作使用。
 
-### 中文关键词不是贴纸
+---
 
-关键词是插画的一部分，直接写在暖白纸面、留白处或相关物件旁。默认使用小号手写字，文字区域不超过画面高度的 10%–12%，绝不占用底部字幕区。
+## 🤝 欢迎贡献 (Contributing)
 
-### 真实实体要分层处理
+欢迎提交 PR 扩充更多视觉隐喻案例、优化图生视频运动提示词或分享精美的成片范例！
 
-生成模型可以负责 Q 版构图、动作和环境，但不能保证精确复刻每一个 Logo、国旗、公司字标或知名人物脸部。
+如果这个项目对你的短视频创作有所启发，**请给项目点一个 ⭐️ Star 支持烤妹儿！**
 
-- 国旗：写明官方结构、颜色、比例和符号；核心镜头建议使用参考图或原始素材叠加。
-- Logo：建议使用原始 Logo 作为参考图或后期叠加。
-- 知名人物：使用明显非写实的 Q 版漫画化身份锚点，不规避安全限制，不做写实人脸克隆。
-- 数字、日期和长句：优先留给确定性字幕层。
+## 📄 开源协议 (License)
 
-### 背景颜色要固定
-
-“Warm white paper”不是精确色号。Skill 默认使用 `#F8F6EF`，并明确禁止黑色背景、灰褐偏色、米黄色渐变、暗角和镜头间底色漂移。若需要像素级一致，应使用固定 First Frame 或在后处理中统一填色。
-
-## 目录
-
-```text
-hand-drawn-video-prompts/
-├── hand-drawn-video-prompts/
-│   ├── SKILL.md                  # Skill 英文运行时
-│   ├── SKILL.zh-CN.md            # Skill 中文参考
-│   └── references/
-│       ├── style-guide.md        # 风格、色彩、构图、运动语法
-│       ├── output-example.md     # 标准输出示例
-│       └── automation-workflow.md# 自动成片工作流边界
-├── outputs/                      # 公开示例提示词与测试输出
-├── demo/                         # 竖版演示视频
-├── README.md                     # 中文文档 (默认首页)
-├── README.en.md                  # 英文文档
-└── README.zh-CN.md               # 中文文档
-```
-
-## 公开示例
-
-- [AI CapEx Flow 图生视频提示词](outputs/flow-image-to-video-prompts-ai-capex-01-07.md)
-- [AI CapEx Skill 测试输出](outputs/q-doodle-flow-skill-v1-ai-capex-test.md)
-- [Nano Banana / Flow 提示词示例](outputs/flow-nano-q-doodle-prompts.md)
-- [视觉风格参考图](outputs/q-doodle-style-reference.png)
-
-## 当前边界
-
-这是一个提示词和视觉拆解 Skill，不包含：
-
-- Flow / Nano Banana API 自动调用
-- 自动生图服务部署
-- 自动生成视频服务部署
-- 复杂版本管理
-- 对生成结果的像素级一致性保证
-
-它可以与 Flow、Nano Banana、ChatCut 等工具配合使用。自动成片模式的可用能力取决于当前账号、工具权限和浏览器连接状态。
-
-## 开源许可证
-
-本项目遵循 MIT License。欢迎提交 Issue、改进建议或贡献新的风格参考与输出示例。
+[MIT License](LICENSE) © 2026 [kaomei](https://github.com/kaomei)

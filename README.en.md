@@ -1,106 +1,158 @@
-# Hand-Drawn Video Prompts
+<div align="center">
 
-[简体中文](README.md) · [English](README.en.md)
+[简体中文](README.md) · [**English**](README.en.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Español](README.es.md)
 
-Turn a Chinese voiceover script into consistent 9:16 illustrated B-roll prompts for Flow, Nano Banana, and compatible video workflows.
+# 🖍️ Hand-Drawn Video Prompts
 
-Hand-Drawn Video Prompts is designed for AI explainers, finance commentary, technology analysis, and educational short-form video creators. It provides:
+### Turn voiceover scripts into consistent 9:16 modern chibi crayon-doodle image and image-to-video prompts.
 
-- Semantic shots designed for roughly 4–6 seconds each
-- Copy-ready English image prompts for Flow and Nano Banana
-- Copy-ready English image-to-video prompts
-- Small Chinese keywords embedded directly in the artwork when requested
-- Visual metaphors tied to the original narration
-- Accuracy notes for flags, companies, logos, public figures, dates, and numbers
+An open-source AI Skill designed for AI explainers, financial commentary, tech insights, and educational short-form creators. Automatically breaks copy into 4–6 second semantic shots, visual metaphors, English Flow / Nano Banana image prompts, video motion prompts, and embedded hand-drawn keywords—eliminating style drift and subtitle clashes.
 
-## Why it exists
+![Codex Skill](https://img.shields.io/badge/Codex-Skill-111827?style=flat-square)
+![Supported Engines](https://img.shields.io/badge/Engines-Flow%20%7C%20Nano%20Banana-0066ff?style=flat-square)
+![Aspect Ratio](https://img.shields.io/badge/Ratio-9%3A16%20Vertical-f59e0b?style=flat-square)
+![Visual Style](https://img.shields.io/badge/Style-Chibi%20Crayon%20Doodle-8b5cf6?style=flat-square)
+![MIT License](https://img.shields.io/badge/License-MIT-16a34a?style=flat-square)
 
-Most AI video workflows break between script analysis and visual generation. A strong argument still needs a clear visual idea every few seconds, and generated images often drift in style, background color, typography, and composition.
+<br/>
 
-This skill standardizes the middle layer: script → visual metaphor → still frame → image-to-video motion.
+<img src="outputs/q-doodle-style-reference.png" alt="Hand-Drawn Video Style Reference Preview" width="800">
 
-## Demo
+<br/>
 
-Two vertical examples generated with this visual workflow:
+Ideal for: **AI tech explainers, finance commentary, knowledge shorts, business model breakdowns, and TikTok / Reels / Shorts / Xiaohongshu video creation**.
 
-- [Demo 722 — 32 seconds](demo/hand-drawn-video-demo-722.mp4)
-- [Demo 723 — 41 seconds](demo/hand-drawn-video-demo-723.mp4)
+</div>
 
-The files are kept as original 9:16 MP4s so visitors can download or preview the actual output.
+---
 
-The workflow can also turn recognizable technology figures—such as Elon Musk, Jensen Huang, and Mark Zuckerberg—into clearly non-photorealistic Q-version characters using safe identity cues like hairstyle, glasses, clothing, pose, and props.
+## ✨ Key Features
 
-## Visual baseline
+- ⏱️ **4–6 Second Semantic Shot Breakdown**: Cuts shots by logical argument beats, rhetorical pacing, and narrative emotion rather than arbitrary word counts.
+- 🖍️ **Modern Chibi Crayon Doodle Aesthetic**: Fixed `#F8F6EF` warm off-white fine paper texture, thick imperfect ink lines, and classic sunflower yellow / cobalt blue / tomato red accents.
+- 🎬 **Dual Prompt Delivery (Still Image + Video Motion)**: Outputs ready-to-copy English image prompts and image-to-video motion prompts for Flow and Nano Banana.
+- ✍️ **Embedded Hand-Drawn Keywords**: Short Chinese/English keywords drawn directly onto paper or objects as part of the illustration, strictly reserving bottom space for subtitles.
+- 🧑‍💼 **Chibi Tech & Business Caricatures**: Transforms recognizable public figures (e.g., Musk, Jensen Huang, Zuckerberg) into expressive chibi cartoon avatars using safe visual anchors.
+- 🎯 **Layered Entity Accuracy**: Provides guidance on flags, logos, numbers, and long text, separating generation from deterministic post-production overlays.
 
-- Modern Q-version hand-drawn crayon illustration
-- Vertical 9:16 composition
-- Fixed warm-white canvas: `#F8F6EF`
-- Extremely subtle, low-contrast paper grain
-- Thick imperfect black hand-drawn lines
-- Sunflower yellow, cobalt blue, and tomato red
-- Natural, restrained Q-version proportions
-- Two to four clear visual groups
-- Small Chinese keywords written directly on the paper, never as sticky notes or cards
-- Clear lower-third space reserved for subtitles
+---
 
-## Quick start
+## 🎬 Video Showcase (Direct Dynamic Previews)
 
-1. Load the skill in Codex.
-2. Paste a Chinese voiceover script.
-3. Ask for prompt-only output or a complete video workflow.
-4. Copy the English prompts into Flow or Nano Banana.
-5. Use the finished still as the Last Frame and a fixed `#F8F6EF` paper frame as the First Frame.
+Watch the animated demo videos generated with this workflow directly (**click GIF to open full HD video with sound**):
 
-Example:
+<div align="center">
+
+| 📱 Case 1: AI CapEx & Financial Reality (Demo 722) | 📱 Case 2: Tech Validation & Commercialization (Demo 723) |
+|:---:|:---:|
+| <a href="demo/hand-drawn-video-demo-722.mp4"><img src="demo/hand-drawn-video-demo-722.gif" alt="Demo 722 Animated Preview" width="320"></a> | <a href="demo/hand-drawn-video-demo-723.mp4"><img src="demo/hand-drawn-video-demo-723.gif" alt="Demo 723 Animated Preview" width="320"></a> |
+| ⏱️ **32s Film** · [Open Full Video 🔊](demo/hand-drawn-video-demo-722.mp4) | ⏱️ **41s Film** · [Open Full Video 🔊](demo/hand-drawn-video-demo-723.mp4) |
+
+</div>
+
+---
+
+## 📋 Example Generated Prompts
+
+<div align="center">
+
+| Shot 01 Still Sample (`#F8F6EF` Canvas) | Shot 02 Still Sample (Visual Metaphor) |
+|:---:|:---:|
+| <img src="outputs/q-doodle-shot-01.png" alt="Shot 01 Still Sample" width="320"> | <img src="outputs/q-doodle-shot-02.png" alt="Shot 02 Still Sample" width="320"> |
+
+</div>
+
+### 🎬 Shot 01: Tech Giants GPU Arms Race
+> **Source Narration**: "The four tech giants spent $200B on GPUs in a single year, but Wall Street is asking: where is the real return?"  
+> **Suggested Duration**: 5 seconds  
+> **Visual Metaphor**: Four chibi tech executives pushing wheelbarrows piled with glowing microchips toward a steep peak, under a giant magnifying glass held by a hand in the sky.  
+> **On-Image Keyword**: "2000亿" ($200B)
 
 ```text
-Break this Chinese voiceover into Flow image and image-to-video prompts. Put the small Chinese keyword directly in the illustration, keep the background at #F8F6EF, and reserve the bottom for subtitles:
+[Flow Image Prompt]
+Modern minimalist crayon doodle illustration, vertical 9:16, warm off-white fine-textured paper background #F8F6EF, thick imperfect black ink outlines. Four cute expressive chibi tech executives in simple business attire pushing wheelbarrows piled high with glowing GPU microchips toward a steep mountain peak. In the clean upper sky, a giant whimsical hand with a gold ring holds a magnifying glass inspecting them. Warm sunlight yellow, cobalt blue, tomato red accents. Hand-drawn Chinese text "2000亿" naturally written in black crayon on the side of a wheelbarrow. Clear composition with generous negative space, empty clean area at bottom reserved for subtitles.
+
+[Flow Image-to-Video Prompt]
+Gentle 2D hand-drawn stop-motion animation. The four chibi executives strain forward cheerfully pushing their wheelbarrows, wheels wobbling slightly. The magnifying glass in the sky pans smoothly from left to right as a beam of warm light highlights the glowing chips. Tiny paper-grain particles float subtly in the air. Fixed #F8F6EF background color with zero flicker.
+```
+
+---
+
+## 🛠️ Workflow
+
+```mermaid
+flowchart LR
+    A[1. Paste Narration / Script] --> B[2. Skill Decomposes 4-6s Shots & Metaphors]
+    B --> C[3. Output Flow / Nano Prompts]
+    C --> D[4. Generate Still & Video Clips]
+    D --> E[5. Align Subtitles & Audio in Editor]
+```
+
+1. **Input Script**: Paste a 30–60 second voiceover script.
+2. **Semantic Breakdown**: Skill analyzes logic, assigns pacing, designs metaphors, and selects keywords.
+3. **Get Dual Prompts**: Generates English image prompts (with `#F8F6EF` paper lock) and video motion prompts.
+4. **Generate Media**: Paste into Flow / Nano Banana to generate still frames; use still as Last Frame and blank `#F8F6EF` paper as First Frame.
+5. **Assemble**: Import to CapCut / Premiere to stitch clips and auto-align captions.
+
+---
+
+## 📦 Installation & Setup
+
+### For Antigravity / Gemini CLI / Codex:
+
+Clone the repository:
+
+```bash
+git clone https://github.com/kaomei/hand-drawn-video-prompts.git
+cd hand-drawn-video-prompts
+```
+
+Copy skill files to your skills directory:
+
+```bash
+# Antigravity / Gemini CLI
+cp -R hand-drawn-video-prompts ~/.gemini/config/skills/hand_drawn_video_prompts
+
+# Codex CLI
+cp -R hand-drawn-video-prompts "${CODEX_HOME:-$HOME/.codex}/skills/hand_drawn_video_prompts"
+```
+
+Invoke in conversation:
+
+```text
+Break this voiceover into Flow image and video prompts with embedded keywords, #F8F6EF background, and reserved subtitle space:
 
 AI makes ideas cheaper, but real-world validation is still slow.
 ```
 
-## Output format
+---
 
-Each shot includes:
+## 🎨 Visual Baseline Standards
 
-- Source narration
-- Suggested duration
-- Visual metaphor
-- Chinese on-image keyword
-- Flow image prompt
-- Flow image-to-video prompt
-- Entity accuracy notes
+| Dimension | Standard Specification | Design Intent |
+|---|---|---|
+| **Canvas Background** | Fixed `#F8F6EF` solid tone | Eliminates vignettes, mud gradients, and inter-frame flicker |
+| **Linework** | Thick imperfect black crayon outlines | Creates a warm, tactile, approachable handcrafted look |
+| **Palette** | Sunflower yellow + cobalt blue + tomato red | Clean tri-color balance with high contrast and clarity |
+| **Negative Space** | 2–4 primary visual groups, bottom 15% clear | Prevents mobile UI and subtitle overlap |
+| **Embedded Words** | Concise 2–4 character handwritten words | Integrates seamlessly into artwork without sticky notes |
 
-## Entity accuracy
+---
 
-The model can handle Q-version composition and motion, but it should not be trusted to reproduce every logo, flag, public-figure likeness, number, or long sentence exactly.
+## ⚠️ Disclaimer & IP Notice
 
-- Flags: specify official structure, colors, proportions, and symbols; use a reference image or deterministic overlay when exactness matters.
-- Logos: use brand cues for generation and add the original logo as a reference or post-production layer when required.
-- Public figures: use clearly non-photorealistic Q-version identity cues such as hairstyle, glasses, clothing, pose, and props. Do not bypass safety restrictions or create realistic face clones.
-- Numbers, dates, and long text: reserve them for a deterministic subtitle or graphic layer.
+1. **Non-Affiliation**: `hand-drawn-video-prompts` is an open-source AI prompt engineering skill and template. **It is independent and not affiliated with any tech corporations, public figures, or AI platforms**.
+2. **Public Figures & Logos**: Public figures are represented as non-photorealistic chibi caricatures. Logos and registered trademarks should be added as deterministic post-production layers.
+3. **Permitted Use**: Provided for personal study, research, and compliant video content creation.
 
-## Repository layout
+---
 
-```text
-hand-drawn-video-prompts/
-├── hand-drawn-video-prompts/
-│   ├── SKILL.md                  # English runtime skill
-│   ├── SKILL.zh-CN.md            # Chinese skill reference
-│   └── references/
-├── outputs/                      # Public prompt examples and tests
-├── demo/                         # Vertical demonstration videos
-├── README.md                     # Chinese documentation (Default)
-├── README.en.md                  # English documentation
-└── README.zh-CN.md               # 中文文档
-```
+## 🤝 Contributing
 
-## Current scope
+Contributions, new visual metaphor ideas, and prompt improvements are welcome!
 
-This is a prompt and visual-decomposition skill. It does not include Flow or Nano Banana API calls, an image/video generation service, complex version management, or pixel-perfect guarantees for generated media.
+If this project helps your video workflow, **please give it a ⭐️ Star to support kaomei**!
 
-It can be combined with Flow, Nano Banana, ChatCut, and other compatible tools.
+## 📄 License
 
-## License
-
-MIT License. Contributions, translations, and new style references are welcome.
+[MIT License](LICENSE) © 2026 [kaomei](https://github.com/kaomei)
