@@ -1,6 +1,6 @@
-# Hand-Drawn Video Prompts
+# 手绘风视频提示词生成器 (Hand-Drawn Video Prompts)
 
-[English](README.md) · 简体中文
+[简体中文](README.md) · [English](README.en.md)
 
 把一段中文口播稿，拆成可以直接复制到 Flow / Nano Banana 的 9:16 视觉提示词。
 
@@ -105,14 +105,18 @@ AI 让想法变得更便宜，但现实验证仍然很慢。
 
 ```text
 hand-drawn-video-prompts/
-├── SKILL.md                         # Skill 主规则
-├── references/
-│   ├── style-guide.md               # 风格、色彩、构图、运动语法
-│   ├── output-example.md            # 标准输出示例
-│   └── automation-workflow.md       # 自动成片工作流边界
-├── outputs/                         # 公开示例提示词与测试输出
-├── demo/                            # 竖版演示视频
-└── work/                            # 研究过程与测试记录
+├── hand-drawn-video-prompts/
+│   ├── SKILL.md                  # Skill 英文运行时
+│   ├── SKILL.zh-CN.md            # Skill 中文参考
+│   └── references/
+│       ├── style-guide.md        # 风格、色彩、构图、运动语法
+│       ├── output-example.md     # 标准输出示例
+│       └── automation-workflow.md# 自动成片工作流边界
+├── outputs/                      # 公开示例提示词与测试输出
+├── demo/                         # 竖版演示视频
+├── README.md                     # 中文文档 (默认首页)
+├── README.en.md                  # 英文文档
+└── README.zh-CN.md               # 中文文档
 ```
 
 ## 公开示例
@@ -134,6 +138,6 @@ hand-drawn-video-prompts/
 
 它可以与 Flow、Nano Banana、ChatCut 等工具配合使用。自动成片模式的可用能力取决于当前账号、工具权限和浏览器连接状态。
 
-## License
+## 开源许可证
 
-MIT License。欢迎 fork、改进和提交新的风格参考或输出示例。
+本项目遵循 MIT License。欢迎提交 Issue、改进建议或贡献新的风格参考与输出示例。
