@@ -1,93 +1,343 @@
 ---
-name: hand-drawn-video-prompts
-description: Use when a user provides a Chinese voiceover script and needs copy-ready vertical B-roll prompts or an assembled 9:16 video in a modern Q-version hand-drawn crayon style.
+name: hand-drawn-video-prompts-vietnamese
+description: Use when a user provides a Vietnamese script, article, or voiceover and needs copy-ready vertical B-roll prompts or an assembled 9:16 hand-drawn video with Vietnamese voiceover and subtitles.
 ---
 
-# Hand-Drawn Video Prompts
+# Vietnamese Hand-Drawn Video Prompts
 
-Turn a Chinese voiceover script into executable 9:16 B-roll shots. Depending on the requested mode, provide copy-ready prompts or continue through the available video, voiceover, caption, timeline, and export workflow.
+Turn a Vietnamese article, script, or voiceover into executable 9:16 hand-drawn B-roll shots.
 
-The default visual language is modern Q-version hand-drawn crayon illustration on a fixed warm-white canvas, `#F8F6EF`.
+The content language is Vietnamese.
+
+Technical image-generation and image-to-video prompts may remain in English when that produces more reliable results with the target generation model, but all narrative content, voiceover, keywords, captions, and subtitles must be Vietnamese.
 
 ## Modes
 
-- **Prompt mode:** output shot breakdowns, Nano Banana/Flow prompts, and Chinese on-image keywords without calling media-generation or export tools.
-- **Complete-video mode:** when the user explicitly asks for a complete video, read [references/automation-workflow.md](references/automation-workflow.md) and use the currently available video, voiceover, transcription/caption, timeline, and export tools.
+### Prompt mode
 
-If the user supplies a full script and asks to make a video without specifying a mode, use complete-video mode. If they ask only for prompts, use prompt mode.
+Use when the user asks only for prompts.
+
+Output:
+
+1. Vietnamese shot breakdown.
+2. Vietnamese voiceover for each shot.
+3. Visual metaphor for each shot.
+4. Copy-ready image-generation prompt.
+5. Copy-ready image-to-video prompt.
+6. Vietnamese post-production keyword.
+7. Suggested shot duration.
+
+Do not claim that images, videos, audio, subtitles, or an exported MP4 were generated unless an actual generation/export tool returned the result.
+
+### Complete-video mode
+
+Use when the user explicitly asks for a complete video.
+
+Read:
+
+references/automation-workflow.md
+
+Follow the complete workflow:
+
+Vietnamese script
+→ shot breakdown
+→ still images
+→ animated clips
+→ Vietnamese voiceover
+→ Vietnamese transcription/captions
+→ editable timeline
+→ MP4 export
+→ verification.
+
+An asynchronous generation task must be waited on until completion or explicit failure.
+
+Never claim that a video is complete without an actual successful exported video result.
+
+## Language rules
+
+The default language for the project is Vietnamese.
+
+### Voiceover
+
+Voiceover must be natural Vietnamese.
+
+Use Vietnamese pronunciation and phrasing.
+
+Do not translate Vietnamese source material into Chinese or English for the voiceover.
+
+Do not invent facts, numbers, dates, company names, quotations, or conclusions that are not present in the source script.
+
+The voiceover should preserve the meaning of the user's Vietnamese source.
+
+### Subtitles
+
+Subtitles must be Vietnamese.
+
+Use the actual Vietnamese voiceover as the timing source when transcription is available.
+
+If transcription differs from the source script, use the user's original Vietnamese wording for factual corrections.
+
+Subtitles must be added as a deterministic post-production text layer.
+
+Do not ask the image or video generation model to render subtitles.
+
+### Keywords
+
+Post-production keywords must be Vietnamese.
+
+Examples:
+
+- AI TỐN ĐIỆN
+- BẮT ĐẦU TÍNH
+- CHI PHÍ TĂNG
+- ÁP LỰC
+- DOANH THU
+- VỐN ĐẦU TƯ
+- RỦI RO
+
+Keep keywords short and readable.
+
+When text accuracy matters, put the keyword in the deterministic post-production layer instead of relying on image generation.
 
 ## Non-negotiable visual rules
 
-- Use vertical 9:16 composition and a solid warm-white canvas with exact base color `#F8F6EF`.
-- Allow only extremely subtle, low-contrast paper grain. Never use black, gray-brown, beige gradients, colored backgrounds, vignettes, or drifting background colors.
-- Use thick imperfect black hand-drawn lines, sunflower yellow, cobalt blue, and tomato red.
-- Keep people natural and restrained in Q-version proportions. Do not use giant heads, tiny bodies, bulging eyes, photorealistic faces, 3D rendering, cyber HUDs, or vintage newspaper styling.
-- Use two to four readable visual groups and leave generous upper and lower breathing room.
-- Keep subtitles out of the generated artwork's lower area.
+Use:
 
-## Chinese keyword mode
+- vertical 9:16 composition
+- solid warm-white canvas
+- exact base color #F8F6EF
+- extremely subtle low-contrast paper grain
+- thick imperfect black hand-drawn marker/crayon outlines
+- bold flat wax-crayon blocks
+- sunflower yellow
+- saturated cobalt blue
+- vivid tomato red
+- only a small muted-green accent
+- natural restrained Q-version proportions
+- simple hand-drawn composition
+- 2–4 large readable visual groups
+- generous breathing room
 
-By default, place the requested short Chinese keyword directly on the paper or beside the relevant object:
+Do not use:
 
-- Use two to eight Chinese characters in small, clear hand-drawn lettering.
-- Keep the text in a top or side safe area, never in the bottom subtitle area.
-- Keep the text block under 10–12% of the frame height.
-- Do not use sticky notes, label cards, stickers, rounded text boxes, title panels, or isolated white cards.
-- In video prompts, keep the lettering fixed and legible. Do not let it rotate, melt, run, or morph.
-- For long text, dates, amounts, company names, and exact claims, use a deterministic subtitle or graphic layer instead.
+- photorealism
+- glossy rendering
+- realistic cinematic lighting
+- 3D rendering
+- cyber HUD
+- complex UI
+- vintage newspaper styling
+- yellowed old paper
+- gray-brown backgrounds
+- gradients
+- vignettes
+- logos unless supplied as approved reference material
+- watermarks
+- unnecessary decorations
+- giant heads
+- tiny bodies
+- bulging eyes
+- distorted faces
 
-When text accuracy is uncertain, provide both a recommended text version and a text-free safe version.
+## Composition
 
-## Entity accuracy
+Use vertical 9:16.
 
-When flags, companies, logos, or public figures appear, create an explicit entity anchor and state the accuracy boundary:
+The main visual group should normally occupy approximately 60–70% of the frame width.
 
-- **Flags:** specify the country, official structure, colors, proportions, and key symbols. Never substitute a similar flag or a random colored banner. Use a reference image or original asset overlay when exactness matters.
-- **Companies and logos:** use industry, product, device, and brand-color cues. Do not ask the model to recreate an exact logo from memory. Use a supplied original logo as a reference or post-production layer when necessary.
-- **Public figures:** use a clearly non-photorealistic Q-version caricature with identity cues such as hairstyle, glasses, clothing, pose, and props. Do not bypass safety restrictions or create realistic face clones.
-- **Numbers and dates:** reserve exact figures for deterministic text layers whenever possible.
+Keep generous space above and below.
 
-Always include an entity accuracy note in the output.
+Reserve the lower area for Vietnamese subtitles.
 
-## Workflow
+Do not put important generated text in the subtitle area.
 
-1. Estimate the narration duration. Default to one semantic shot every 4–6 seconds.
-2. Split on argument turns, causal changes, examples, and conclusions rather than punctuation alone.
-3. Give each shot one clear visual metaphor.
-4. Write a complete, self-contained template for every shot; do not rely on “same as above.”
-5. Run the quality check below before delivering.
+Use 2–4 large visual groups per shot.
 
-## Required output template
+The scene should be understandable on a phone within approximately one second.
 
-```text
-Shot 01
-Source narration:
-Suggested duration:
-Visual metaphor:
-Chinese on-image keyword:
+Describe spatial relationships explicitly:
 
-[Flow image prompt]
-<complete, self-contained English prompt>
+- left
+- center
+- right
+- foreground
+- background
+- upper area
+- lower area
 
-[Flow image-to-video prompt]
-<complete, self-contained English prompt>
+Do not rely only on abstract emotional descriptions.
 
-[Entity accuracy note]
-<reference-image or deterministic-layer guidance>
-```
+## Text inside generated artwork
 
-## Prompt requirements
+Generated artwork should normally contain no text.
 
-Every image prompt must independently state: vertical 9:16; solid warm-white canvas, exact base color `#F8F6EF`; concrete people and objects; an executable action; the visual metaphor; spatial relationships; thick black hand-drawn lines; the three-color palette; a subject group occupying roughly 60–70% of the width; and upper/lower breathing room.
+If a short Vietnamese keyword is explicitly requested, it may be placed directly on the warm-white paper or beside the relevant object.
 
-Every image-to-video prompt should default to about five seconds and use the supplied finished still as the final composition. For Flow First + Last, state that the blank warm-white paper is the First Frame and the finished still is the Last Frame. Use a locked camera, rigid paper cutouts, tactile paper stop-motion, no camera drift/zoom/parallax, no lip sync, no added characters/logos, and no audio.
+Keep it:
 
-## Quality check
+- short
+- readable
+- fixed
+- small
+- away from faces
+- away from fast-moving objects
+- outside the bottom subtitle zone
 
-- Every shot has one core meaning, a reasonable duration, and all required fields.
-- Every prompt is self-contained and consistent in aspect ratio, exact background color, linework, and palette.
-- Exact numbers, dates, logos, flags, and long text are marked for deterministic treatment.
-- Public figures are handled as non-photorealistic Q-version illustrations without safety bypasses.
-- No API configuration, complex version management, or unnecessary confirmation gates are added to prompt mode.
+Do not use:
 
-中文参考：[SKILL.zh-CN.md](SKILL.zh-CN.md)
+- sticky notes
+- label cards
+- stickers
+- rounded text boxes
+- title panels
+- isolated white cards
+- subtitle boxes
+
+For company names, people names, dates, amounts, statistics, quotations, or long Vietnamese sentences, prefer deterministic post-production text.
+
+If text generation accuracy is uncertain, provide both:
+
+1. a recommended Vietnamese text version
+2. a text-free safe version
+
+## Real entities
+
+For real companies, products, organizations, public figures, countries, or other identifiable entities:
+
+- use restrained visual identity cues
+- do not invent logos
+- do not deform official logos
+- use supplied reference images when exact identity is important
+- prefer deterministic post-production overlays for exact names, logos, dates, and numbers
+
+For public figures, use stylized non-photorealistic Q-version representation rather than photorealistic face cloning.
+
+## Animation rules
+
+Use tactile paper stop-motion language.
+
+Default:
+
+tactile 10–12 fps paper stop-motion
+
+Use:
+
+- locked flat frontal camera
+- rigid flat paper cutouts
+- small settling bounce
+- simple object slides
+- short hinge-like hand movement
+- subtle wheel rotation
+- restrained object motion
+- stable final frame
+
+Avoid:
+
+- camera drift
+- zoom
+- parallax
+- smooth 3D motion
+- face morphing
+- lip sync
+- newly appearing characters
+- newly appearing logos
+- text morphing
+- watermark
+- audio generated inside the video model
+
+When using first and last frames:
+
+1. First frame = completely blank #F8F6EF warm-white paper.
+2. Last frame = supplied completed illustration.
+3. Keep the final composition consistent.
+4. Hold the exact final frame for approximately the final 0.8 seconds.
+
+If only one completed image is available:
+
+Animate the supplied completed illustration in place while preserving every drawn shape and the exact composition.
+
+## Shot duration
+
+Default shot duration:
+
+4–6 seconds.
+
+Use the voiceover as the main timing reference.
+
+Adjust shot duration around natural Vietnamese speech boundaries.
+
+Do not force every shot to have exactly the same duration when the voiceover requires otherwise.
+
+## Visual metaphor
+
+Use clear visual metaphors.
+
+Examples:
+
+| Vietnamese relationship | Preferred visual metaphor |
+|---|---|
+| cạnh tranh / chạy đua | race, chase, tug-of-war |
+| chi phí / tiêu hao | leaking tank, heavy weight, monster eating coins, meter |
+| kiểm chứng / báo cáo | exam, magnifying glass, health check |
+| lựa chọn / kết luận | forked road, scale, switch, two doors |
+| rủi ro / áp lực | crack, warning, unstable blocks, countdown |
+| tăng trưởng | rising arrow, growing stack, expanding object |
+| giảm sút | falling blocks, shrinking bar, leaking container |
+| đầu tư | carts, coins, machine receiving resources |
+| doanh thu | coins, flowing revenue stream |
+| công nghệ | machine, chip, gear, circuit-like hand-drawn object |
+
+The metaphor must communicate the meaning of the Vietnamese narration without requiring generated text.
+
+## Required shot output
+
+For each shot provide:
+
+### Cảnh XX
+
+**Lời đọc:**
+Vietnamese voiceover.
+
+**Thời lượng:**
+Approximately 4–6 seconds.
+
+**Ý tưởng hình ảnh:**
+A concise Vietnamese visual metaphor.
+
+**Keyword hậu kỳ:**
+Short Vietnamese keyword.
+
+**Flow image prompt:**
+Technical prompt, preferably in English for reliable image generation.
+
+**Flow image-to-video prompt:**
+Technical prompt, preferably in English for reliable video generation.
+
+## Quality control
+
+Before considering the workflow complete, verify:
+
+- 9:16 aspect ratio
+- #F8F6EF warm-white background
+- consistent visual style
+- consistent character proportions
+- no unwanted text
+- no malformed logos
+- Vietnamese voiceover
+- Vietnamese subtitles
+- subtitle safe area
+- correct narration order
+- correct scene order
+- no missing scenes
+- no audio gaps
+- no severe character deformation
+- stable final frames
+- MP4 export actually exists
+
+A generated prompt is not an exported video.
+
+A generated image is not an exported video.
+
+An asynchronous task that is still running is not a completed video.
+
+Only report completion after the final MP4 export has succeeded and the resulting file is available.

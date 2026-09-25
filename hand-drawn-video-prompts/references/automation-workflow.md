@@ -1,36 +1,138 @@
-# 自动成片工作流
+# Vietnamese Hand-Drawn Video Automation Workflow
 
-本参考只在用户要求直接生成完整视频时读取。目标是：中文文稿 → 画面素材 → 动态片段 → 中文配音 → 字幕 → 时间线 → 导出视频。
+This workflow is for creating complete vertical 9:16 hand-drawn videos from Vietnamese articles, scripts, or voiceover text.
 
-## 默认参数
+## Goal
 
-- 画幅：9:16；默认总时长按文稿语速决定，镜头通常 4–6 秒。
-- 视觉：现代 Q 版手绘蜡笔插画、暖白素描纸、粗黑手绘线、向日葵黄/钴蓝/番茄红。
-- 声音：中文普通话旁白；用户未指定时选择清晰、自然、偏知识类的声音。
-- 字幕：中文，按旁白逐句对齐；优先使用确定性转录结果，不让图像或视频模型绘制字幕。
-- 输出：先生成可编辑时间线，再导出 MP4；生成失败的单个镜头只重试该镜头。
+Vietnamese article/script
+→ Vietnamese voiceover
+→ hand-drawn visual scenes
+→ animated clips
+→ Vietnamese captions
+→ editable timeline
+→ MP4 export
 
-## 执行顺序
+## Default parameters
 
-1. **建立项目并准备文稿**：保留用户原文，拆成镜头和旁白片段；不把金额、日期、公司名交给图像模型生成。
-2. **生成静帧**：每个镜头生成一张无文字、无 Logo 的完成构图。若已有用户素材，优先导入并沿用；若无素材，使用图像生成工具，逐镜头生成，不批量复用不相同构图。
-3. **生成动态片段**：使用可接入的视频生成工具把每张静帧转成 4–6 秒竖版片段。保持人物、色板和构图一致；优先使用纸片式组装、轻微物件动作和稳定尾帧。
-4. **生成旁白**：使用中文 TTS 生成整段旁白或逐镜头旁白。旁白文本必须来自用户文稿，不擅自增删观点；必要时只压缩明显口头填充词并告知用户。
-5. **生成字幕**：优先用旁白音频转录并校对中文文本；如果转录与原稿不一致，以用户原稿为准修正字幕。字幕作为确定性文字层加入，不交给视频模型绘制。
-6. **组装时间线**：按镜头顺序放置视频、旁白、字幕和后期关键词。关键词只作为后期文字层，不写进生成画面。旁白是主节奏，镜头时长可围绕语音边界微调。
-7. **导出并复核**：导出 9:16 MP4，检查画面比例、字幕安全区、旁白完整性、字幕错字、片段衔接、人物变形和末帧漂移。发现单项问题时只重做对应阶段。
+- Aspect ratio: 9:16
+- Typical shot duration: 4–6 seconds
+- Background: exact warm-white #F8F6EF
+- Visual style: modern Q-version hand-drawn crayon illustration
+- Lines: thick imperfect black hand-drawn lines
+- Accent colors: sunflower yellow, cobalt blue, tomato red
+- Voiceover: natural Vietnamese
+- Captions: Vietnamese
+- Subtitle placement: lower safe area
+- Generated artwork: normally no text
+- Final output: 9:16 MP4
 
-## 工具路由
+## Execution order
 
-在当前会话可用的情况下，优先使用 ChatCut 工作流完成项目、素材、时间线、配音、转录/字幕和导出；如用户明确要求 HeyGen 主播视频，则改用 HeyGen 工作流。Google Flow/Nano Banana 提示词仍可同时生成，但不把它们假设为当前自动化工具，除非会话实际提供对应连接器。
+### 1. Prepare Vietnamese script
 
-## 交付结果
+Preserve the user's Vietnamese source.
 
-自动成片模式至少交付：
+Split it into scenes and Vietnamese voiceover segments.
 
-- 最终 MP4 视频；
-- 可编辑项目/时间线（如果工具支持）；
-- 字幕已烧录或独立字幕轨；
-- 生成失败、人工修正和仍需确认的事项列表。
+Do not invent facts, dates, amounts, company names, quotations, or conclusions.
 
-不要在没有导出结果时声称“视频已完成”。异步生成任务必须等待到完成或明确报告失败原因。
+### 2. Generate still images
+
+Generate one finished composition per shot.
+
+Use the fixed #F8F6EF warm-white background.
+
+Keep the same visual language across all shots.
+
+Do not rely on image generation for exact:
+
+- names
+- numbers
+- dates
+- company names
+- long sentences
+- subtitles
+
+If the user already provides visual assets, prefer those assets when appropriate.
+
+### 3. Generate animated clips
+
+Convert each still image into a 4–6 second vertical clip.
+
+Use tactile 10–12 fps paper stop-motion.
+
+Keep:
+
+- locked frontal camera
+- consistent character design
+- consistent paper texture
+- consistent palette
+- stable final frame
+
+If a shot fails, retry only that shot when possible.
+
+### 4. Generate Vietnamese voiceover
+
+Generate natural Vietnamese narration from the approved Vietnamese script.
+
+Do not translate the voiceover into Chinese or English.
+
+Do not silently rewrite factual claims.
+
+### 5. Generate Vietnamese captions
+
+Transcribe the Vietnamese voiceover.
+
+Correct transcription against the approved Vietnamese source when needed.
+
+Use deterministic caption text.
+
+Do not ask the image/video generation model to render subtitles.
+
+### 6. Assemble timeline
+
+Place:
+
+- video clips
+- Vietnamese voiceover
+- Vietnamese subtitles
+- post-production keywords
+
+in the correct order.
+
+Voiceover is the primary timing reference.
+
+Adjust shot duration around natural Vietnamese speech boundaries.
+
+### 7. Export
+
+Export a real 9:16 MP4.
+
+Before reporting completion, verify that the exported MP4 exists and is accessible.
+
+## Completion rule
+
+Never say that the video is complete merely because:
+
+- prompts were generated
+- images were generated
+- clips were requested
+- an asynchronous task was started
+- a timeline was prepared
+
+An asynchronous task must be awaited until it completes or reports an explicit failure.
+
+The final MP4 export must succeed before saying the video is complete.
+
+## Required delivery
+
+A complete-video workflow should deliver:
+
+- final MP4
+- editable project/timeline when supported
+- Vietnamese subtitles as burned-in or separate subtitle track
+- list of failed shots
+- list of manual corrections
+- list of unresolved items
+
+If export fails, report the failure and its known cause instead of claiming completion.
